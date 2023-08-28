@@ -1,9 +1,10 @@
 # KN01
 
-## Low CPU
+## CPU mit weniger Cores als Gast-System
 
-## High CPU
+## CPU mit mehr Cores als Gast-System
 
-## Low RAM
+## Weniger RAM als Gast-System
 
-## High RAM
+## Mehr RAM als Gast-System
+
