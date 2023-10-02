@@ -1,0 +1,54 @@
+#cloud-config
+users:
+  - name: ubuntu
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups: users, admin
+    home: /home/ubuntu
+    shell: /bin/bash
+    ssh_authorized_keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3fchnA2LxE+IqX/RKJYurKAPxvpNGpJriKfjmbWhbz7tbVBSNlniHDviNMhTLdhKOxSIoCDZu3AGVIvTYFy8T1jMAsUia+yc79YGVBP3AaCnP8tWyVhkZJtwr3vs1HuQqThyzFnRgYmzsPQKqEJduN7tq+PLAwlKrynnfAjD9GEIvS8EoAC2Bk9akfaj6l6ccrSrkdjbrA6bc4kyIfkf3PoYpq5pHvlerAE6fTNq2dM15KSqSojunNFU8cIuizy3MnpWmlTT3d+b7/Fh8QQBVtdn3ZZfMMLPbalwqDhBQCVZ9nbV+q8wtZ8tDrLTVwXt9WbJdXuei5zpBsYRtXfTF aws-key
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDDEirijxHZRaN8tdYpBI0YFt9dZuHWLaAJ+WId1Zx/F46AJSwv0nZbQHf8cSvjWrNAsZXe/OxbLzextUsONanKsCdoIdppHgXersHCNlliHs0HlDL3TdWLfVgRraTEf17OsyscW+abqMrnPx5M4Q0IBDqZKccpuGJHD+5BssWIv+qevOOlU2FbLSk3Y3ctJUXihFqXJ91hjq5iqD48dpi7116BderW0sRv0ljePnF2Dh222ZPiH3jwwm4guKbdT5y86YKFqX60FE9KyVSUehsw40rIgTvFyksZl9d9HOTVQgkNn+jqWbanQ3HFKE9Ea1u6pAw2cO2efO3dHbJev6Nh aws-key
+ssh_pwauth: false
+disable_root: false
+package_update: true
+packages:
+  - apache2
+  - php
+  - libapache2-mod-php
+  - adminer
+runcmd:
+  - sudo a2enconf adminer
+  - sudo systemctl restart apache2
+write_files:
+  - path: /var/www/html/db.php
+    content: |
+      <?php
+         //database
+         $servername = "54.161.185.12";
+         $username = "admin";
+         $password = "password";
+         $dbname = "mysql";
+
+         // Create connection
+         $conn = new mysqli($servername, $username, $password, $dbname);
+         // Check connection
+         if ($conn->connect_error) {
+                 die("Connection failed: " . $conn->connect_error);
+         }
+
+         $sql = "select Host, User from mysql.user;";
+         $result = $conn->query($sql);
+         while($row = $result->fetch_assoc()){
+                 echo($row["Host"] . " / " . $row["User"] . "<br />");
+         }
+         //var_dump($result);
+          ?>
+    permissions: "0666"
+  - path: /var/www/html/info.php
+    content: |
+      <?php
+      // Show all information, defaults to INFO_ALL
+      phpinfo();
+
+      ?>
+    permissions: "0666"
