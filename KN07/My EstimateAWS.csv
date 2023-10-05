@@ -1,0 +1,17 @@
+﻿Estimate summary
+Upfront cost,Monthly cost,Total 12 months cost,Currency
+0,59.28,711.36,USD
+,,* Includes upfront cost
+
+
+Detailed Estimate
+Group hierarchy,Region,Description,Service,Upfront,Monthly,First 12 months total,Currency,Status,Configuration summary
+My Estimate,US East (Ohio),,Amazon EC2 ,0,9.995,119.94,USD,,"Tenancy (Shared Instances), Operating system (Linux), Workload (Consistent, Number of instances: 1), Advance EC2 instance (t2.small), Pricing strategy (Compute Savings Plans 3 Year  None upfront), Enable monitoring (disabled), EBS Storage amount (20 GB), DT Inbound: Not selected (0 TB per month), DT Outbound: Not selected (0 TB per month), DT Intra-Region: (0 TB per month)"
+My Estimate,US East (Ohio),,Amazon EC2 ,0,20.191000000000003,242.29,USD,,"Tenancy (Shared Instances), Operating system (Linux), Workload (Consistent, Number of instances: 1), Advance EC2 instance (t4g.medium), Pricing strategy (Compute Savings Plans 3 Year  None upfront), Enable monitoring (disabled), EBS Storage amount (100 GB), DT Inbound: Not selected (0 TB per month), DT Outbound: Not selected (0 TB per month), DT Intra-Region: (0 TB per month)"
+My Estimate,US East (Ohio),,Classic Load Balancer,0,24.09,289.08,USD,,"Number of Classic Load Balancers (1), Processed bytes per CLB (1 GB per hour)"
+My Estimate,US East (Ohio),,EBS,0,5,60.00,USD,,"Daily backup retention period (7 Days), Monthly backup retention period (3 Months), Weekly backup retention period (4 Weeks), Total EBS storage (100 GB)"
+
+
+
+Acknowledgement
+"* AWS Pricing Calculator provides only an estimate of your AWS fees and doesn't include any taxes that might apply. Your actual fees depend on a variety of factors, including your actual usage of AWS services."
